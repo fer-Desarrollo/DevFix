@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sobre DevFix</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0; /* Quitamos padding general para diseño full width */
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 2px solid #39ff14;
+        }
+        h1 { font-size: 3.5em; color: white; margin-bottom: 10px; text-transform: uppercase; }
+        span { color: #39ff14; }
+        .intro { max-width: 700px; margin: 0 auto 20px; font-size: 1.3em; line-height: 1.6; }
+
+        /* Stats Section */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            background: #1a1a1a;
+            padding: 30px;
+            margin-bottom: 50px;
+        }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 2.5em; color: #39ff14; font-weight: bold; display: block; }
+        .stat-label { text-transform: uppercase; letter-spacing: 1px; font-size: 0.9em; }
+
+        /* Mission & Vision Grid */
+        .mv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+        .mv-card {
+            background: #1e1e1e;
+            padding: 40px;
+            border-radius: 15px;
+            border-left: 5px solid #39ff14;
+        }
+        .mv-card h2 { color: white; margin-top: 0; }
+        .mv-card p { line-height: 1.6; color: #bbb; }
+
+        /* Team Section */
+        .team-section { text-align: center; margin-bottom: 60px; }
+        .team-title { font-size: 2em; margin-bottom: 40px; color: white; }
+        .team-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .member-card {
+            background: #1e1e1e;
+            width: 250px;
+            padding: 20px;
+            border-radius: 15px;
+            transition: 0.3s;
+            border: 1px solid #333;
+        }
+        .member-card:hover { transform: translateY(-10px); border-color: #39ff14; }
+        .avatar {
+            width: 100px; height: 100px;
+            background: #333;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 40px; color: #39ff14;
+        }
+        .member-name { color: white; margin: 10px 0 5px; font-size: 1.2em; }
+        .member-role { color: #39ff14; font-size: 0.9em; margin-bottom: 10px; }
+
+        /* Navigation Buttons */
+        .action-bar {
+            text-align: center;
+            padding: 40px;
+            background: #1a1a1a;
+            margin-top: 40px;
+        }
+        .btn-nav {
+            display: inline-block;
+            margin: 0 15px;
+            padding: 15px 30px;
+            border: 2px solid #39ff14;
+            color: #39ff14;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+        .btn-nav:hover { background: #39ff14; color: black; box-shadow: 0 0 15px #39ff14; }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>Somos <span>DevFix</span></h1>
+    <p class="intro">Transformamos desafíos complejos en soluciones digitales elegantes. Tu socio estratégico en desarrollo de software y mantenimiento de hardware de alto nivel.</p>
+</div>
+
+<div class="stats-bar">
+    <div class="stat-item">
+        <span class="stat-number">+10</span>
+        <span class="stat-label">Proyectos Exitosos</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-number">98%</span>
+        <span class="stat-label">Clientes Satisfechos</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-number">24/7</span>
+        <span class="stat-label">Soporte Técnico</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-number">+2</span>
+        <span class="stat-label">Años de Experiencia</span>
+    </div>
+</div>
+
+<div class="mv-grid">
+    <div class="mv-card">
+        <h2><i class="fas fa-bullseye"></i> Nuestra Misión</h2>
+        <p>Empoderar a las empresas mexicanas a través de tecnología de vanguardia, ofreciendo soluciones de software a la medida y servicios de mantenimiento que garanticen la continuidad operativa de sus negocios.</p>
+    </div>
+    <div class="mv-card">
+        <h2><i class="fas fa-eye"></i> Nuestra Visión</h2>
+        <p>Ser reconocidos para el 2030 como la consultora líder en innovación tecnológica en el Estado de México, distinguiéndonos por nuestra calidad, ética profesional y compromiso con la transformación digital.</p>
+    </div>
+</div>
+
+<div class="team-section">
+    <h2 class="team-title">Conoce a los Expertos</h2>
+    <div class="team-grid">
+        <div class="member-card">
+            <div class="avatar"><i class="fas fa-user-tie"></i></div>
+            <h3 class="member-name">Ing. Fernando García T.</h3>
+            <p class="member-role">CEO & Fundador</p>
+            <p style="font-size: 0.8em; color: #888;">Maestro en reparación de equipos y experto en Desarrollo Web y móvil.</p>
+        </div>
+        <div class="member-card">
+            <div class="avatar"><i class="fas fa-laptop-code"></i></div>
+            <h3 class="member-name">Ing. Adriana Gonzalez S.</h3>
+            <p class="member-role">Lead Developer</p>
+            <p style="font-size: 0.8em; color: #888;">Especialista en Android Studio y Desarrollo Web.</p>
+        </div>
+    </div>
+</div>
+
+<div class="action-bar">
+    <a href="/visitanos" class="btn-nav"><i class="fas fa-map-marked-alt"></i> Ubica nuestras oficinas</a>
+    <a href="/comentarios" class="btn-nav"><i class="fas fa-comment-dots"></i> Contáctanos hoy</a>
+</div>
+
+</body>
+</html>
