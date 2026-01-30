@@ -3,71 +3,108 @@
 <head>
     <title>Comentarios - DevFix</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             background-color: #121212;
-            color: white;
-            font-family: 'Courier New', monospace; /* Fuente tipo código */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            padding: 20px;
         }
+        h1 { color: #39ff14; }
+
+        /* Estilos del Formulario */
         .form-container {
-            background: #1a1a1a;
-            padding: 40px;
-            border-radius: 10px;
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 15px;
             border: 1px solid #333;
-            width: 400px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            max-width: 500px;
+            margin: 0 auto 40px;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.1);
         }
-        h2 { color: #39ff14; text-align: center; border-bottom: 1px solid #333; padding-bottom: 20px; }
-
         input, textarea {
-            width: 100%;
-            background: #2b2b2b;
-            border: none;
-            border-bottom: 2px solid #39ff14;
-            color: white;
+            width: 90%;
             padding: 10px;
-            margin-bottom: 20px;
-            box-sizing: border-box; /* Para que no se salga del borde */
-            font-family: inherit;
+            margin: 10px 0;
+            background: #2c2c2c;
+            border: 1px solid #444;
+            color: white;
+            border-radius: 5px;
         }
-        input:focus, textarea:focus { outline: none; background: #333; }
-
         button {
-            width: 100%;
             background: #39ff14;
             color: black;
             border: none;
-            padding: 15px;
+            padding: 10px 20px;
             font-weight: bold;
             cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.3s;
+            border-radius: 5px;
+            font-size: 1.1em;
         }
-        button:hover { background: white; }
+        button:hover { background: #32d911; }
 
-        .back-link { display: block; text-align: center; margin-top: 20px; color: #777; text-decoration: none; font-size: 0.9em; }
-        .back-link:hover { color: #39ff14; }
+        /* Estilos de la Tabla de Comentarios */
+        .comments-list {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .comment-card {
+            background: #1a1a1a;
+            border-left: 4px solid #39ff14;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        .comment-user { color: #39ff14; font-weight: bold; }
+        .comment-body { font-size: 1.1em; color: white; }
     </style>
 </head>
 <body>
+
+<h1><i class="fas fa-comments"></i> Déjanos tu Opinión</h1>
+
 <div class="form-container">
-    <h2>< SYSTEM FEEDBACK ></h2>
-    <form action="#" method="post">
-        <label>USUARIO:</label>
-        <input type="text" name="nombre" placeholder="Ingresa tu nombre">
+    <form th:action="@{/guardar-comentario}" th:object="${comentario}" method="post">
+        <input type="text" th:field="*{nombre}" placeholder="Tu Nombre" required>
+        <input type="email" th:field="*{correo}" placeholder="Tu Correo Electrónico" required>
+        <textarea th:field="*{mensaje}" rows="4" placeholder="Escribe tu mensaje aquí..." required></textarea>
 
-        <label>DATA ENTRY:</label>
-        <textarea name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..."></textarea>
-
-        <button type="submit">ENVIAR DATOS</button>
+        <button type="submit">Enviar Comentario</button>
     </form>
-    <a href="/nosotros" class="back-link"><< VOLVER AL SISTEMA</a>
 </div>
+
+<hr style="border-color: #333; margin: 40px auto; max-width: 800px;">
+
+<div class="comments-list">
+    <h2 style="color: white; text-align: center;">Comentarios Recientes</h2>
+
+    <div th:each="c : ${listaComentarios}" class="comment-card">
+        <div class="comment-header">
+            <span class="comment-user" th:text="${c.nombre}">Usuario</span>
+            <span th:text="${c.fechaRegistro}">Fecha</span>
+        </div>
+        <div class="comment-body" th:text="${c.mensaje}">
+            Mensaje del usuario...
+        </div>
+    </div>
+
+    <p th:if="${#lists.isEmpty(listaComentarios)}" style="text-align: center; color: #666;">
+        Aún no hay comentarios. ¡Sé el primero!
+    </p>
+</div>
+
+<br>
+<a href="/nosotros" style="color: #39ff14;">Volver a Nosotros</a>
+
 </body>
 </html>
